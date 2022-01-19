@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 
 class OwnersController extends Controller
 {
+    //コントローラミドルウェア..これを指定しておくと便利。したの場合全てにauth:adminで認証が入るようになる
     public function __construct()
     {
         $this->middleware('auth:admin');
-    } 
+    }
 
     /**
      * Display a listing of the resource.

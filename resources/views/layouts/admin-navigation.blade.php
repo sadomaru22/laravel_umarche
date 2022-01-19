@@ -18,7 +18,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.owners.index')" :active="request()->routeIs('admin.owners.index')">
-                        オーナー管理
+                        オーナー管理はこちら
                     </x-nav-link>
                 </div>
             </div>

@@ -10,6 +10,7 @@ class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * 連想配列でテストデータの作成
      *
      * @return void
      */

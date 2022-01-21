@@ -13,7 +13,7 @@ class OwnersController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-    } 
+    }
 
     public function index()
     {
@@ -33,8 +33,10 @@ class OwnersController extends Controller
         // var_dump($q_first);
 
         // dd($e_all, $q_get, $q_first, $c_test);
-        return view('admin.owners.index', 
-        compact('e_all', 'q_get'));
+        return view(
+            'admin.owners.index',
+            compact('e_all', 'q_get')
+        );   //変数をView側に渡すメソッド
     }
 
     /**

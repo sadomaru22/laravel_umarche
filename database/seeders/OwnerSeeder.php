@@ -10,6 +10,7 @@ class OwnerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * 連想配列でテストデータの作成
      *
      * @return void
      */
@@ -20,19 +21,19 @@ class OwnerSeeder extends Seeder
                 'name' => 'test1',
                 'email' => 'test1@test.com',
                 'password' => Hash::make('password123'),
-                'created_at' => '2021/01/01 11:11:11'    
+                'created_at' => '2021/01/01 11:11:11'
             ],
             [
                 'name' => 'test2',
                 'email' => 'test2@test.com',
                 'password' => Hash::make('password123'),
-                'created_at' => '2021/01/01 11:11:11'    
+                'created_at' => '2021/01/01 11:11:11'
             ],
             [
                 'name' => 'test3',
                 'email' => 'test3@test.com',
                 'password' => Hash::make('password123'),
-                'created_at' => '2021/01/01 11:11:11'    
+                'created_at' => '2021/01/01 11:11:11'
             ],
         ]);
     }

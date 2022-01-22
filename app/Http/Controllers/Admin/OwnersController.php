@@ -14,7 +14,7 @@ class OwnersController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-    } 
+    }
 
     public function index()
     {
@@ -36,8 +36,10 @@ class OwnersController extends Controller
         // dd($e_all, $q_get, $q_first, $c_test);
         $owners = Owner::select('name', 'email', 'created_at')->get();
 
-        return view('admin.owners.index', 
-        compact('owners'));
+        return view(
+            'admin.owners.index',
+            compact('owners')
+        );
     }
 
     /**
@@ -58,7 +60,7 @@ class OwnersController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->name;
+        //$request->name;  $requestで入力された値をインスタンス化している
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:owners',
@@ -72,8 +74,8 @@ class OwnersController extends Controller
         ]);
 
         return redirect()
-        ->route('admin.owners.index')
-        ->with('message', 'オーナー登録を実施しました。');
+            ->route('admin.owners.index')
+            ->with('message', 'オーナー登録を実施しました。');
     }
 
     /**

@@ -10,3 +10,5 @@ if($status === 'error'){$bgColor = 'bg-red-500';}
     {{ session('message' )}}
   </div>
 @endif
+
+{{--  }}

@@ -30,7 +30,7 @@
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     件〜
                     <span class="font-medium">{{ $paginator->lastItem() }}</span>
-                    件 を表示
+                    件 を表示!
                 </p>
             </div>
 

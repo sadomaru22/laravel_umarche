@@ -14,7 +14,7 @@ class OwnersController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-    } 
+    }
 
     public function index()
     {
@@ -36,8 +36,10 @@ class OwnersController extends Controller
         // dd($e_all, $q_get, $q_first, $c_test);
         $owners = Owner::select('id', 'name', 'email', 'created_at')->get();
 
-        return view('admin.owners.index', 
-        compact('owners'));
+        return view(
+            'admin.owners.index',
+            compact('owners')
+        );
     }
 
     /**
@@ -72,8 +74,8 @@ class OwnersController extends Controller
         ]);
 
         return redirect()
-        ->route('admin.owners.index')
-        ->with('message', 'オーナー登録を実施しました。');
+            ->route('admin.owners.index')
+            ->with('message', 'オーナー登録を実施しました。');
     }
 
     /**
@@ -110,14 +112,14 @@ class OwnersController extends Controller
     public function update(Request $request, $id)
     {
         $owner = Owner::findOrFail($id);
-        $owner->name = $request->name;
+        $owner->name = $request->name;  //入れてあげる
         $owner->email = $request->email;
         $owner->password = Hash::make($request->password);
         $owner->save();
 
         return redirect()
-        ->route('admin.owners.index')
-        ->with('message', 'オーナー情報を更新しました。');
+            ->route('admin.owners.index')
+            ->with('message', 'オーナー情報を更新しました。');
     }
 
     /**

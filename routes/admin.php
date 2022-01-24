@@ -27,13 +27,13 @@ Route::get('/', function () {
 });
 
 Route::resource('owners', OwnersController::class)
-->middleware('auth:admin');
+    ->middleware('auth:admin');
 
-Route::prefix('expired-owners')->
-    middleware('auth:admin')->group(function(){
-        Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])->name('expired-owners.index');
-        Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])->name('expired-owners.destroy');
-});
+Route::prefix('expired-owners')->middleware('auth:admin')->group(function () {
+    Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])->name('expired-owners.index');
+    Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])->name('expired-owners.destroy');
+    Route::post('store/{owner}', [OwnersController::class, 'expiredOwnerRestore'])->name('expired-owners.restore');
+});  //2パターン設定する(期限切れオーナーの表示と、強制削除)
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -41,54 +41,54 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
-                ->middleware('guest')
-                ->name('register');
+    ->middleware('guest')
+    ->name('register');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
-                ->middleware('guest');
+    ->middleware('guest');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
-                ->middleware('guest')
-                ->name('login');
+    ->middleware('guest')
+    ->name('login');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-                ->middleware('guest');
+    ->middleware('guest');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->middleware('guest')
-                ->name('password.request');
+    ->middleware('guest')
+    ->name('password.request');
 
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->middleware('guest')
-                ->name('password.email');
+    ->middleware('guest')
+    ->name('password.email');
 
 Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->middleware('guest')
-                ->name('password.reset');
+    ->middleware('guest')
+    ->name('password.reset');
 
 Route::post('/reset-password', [NewPasswordController::class, 'store'])
-                ->middleware('guest')
-                ->name('password.update');
+    ->middleware('guest')
+    ->name('password.update');
 
 Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
-                ->middleware('auth:admin')
-                ->name('verification.notice');
+    ->middleware('auth:admin')
+    ->name('verification.notice');
 
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-                ->middleware(['auth:admin', 'signed', 'throttle:6,1'])
-                ->name('verification.verify');
+    ->middleware(['auth:admin', 'signed', 'throttle:6,1'])
+    ->name('verification.verify');
 
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware(['auth:admin', 'throttle:6,1'])
-                ->name('verification.send');
+    ->middleware(['auth:admin', 'throttle:6,1'])
+    ->name('verification.send');
 
 Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
-                ->middleware('auth:admin')
-                ->name('password.confirm');
+    ->middleware('auth:admin')
+    ->name('password.confirm');
 
 Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])
-                ->middleware('auth:admin');
+    ->middleware('auth:admin');
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->middleware('auth:admin')
-                ->name('logout');
+    ->middleware('auth:admin')
+    ->name('logout');

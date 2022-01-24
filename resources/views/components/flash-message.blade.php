@@ -1,7 +1,7 @@
 @props(['status' => 'info'])
 
 @php
-if(session('status') === 'info'){$bgColor = 'bg-blue-300';}
+if(session('status') === 'info'){$bgColor = 'bg-blue-300';}  //Controller側でredirectする際にstatusをinfoかalertにすることができる。
 if(session('status') === 'alert'){$bgColor = 'bg-red-500';}
 @endphp
 

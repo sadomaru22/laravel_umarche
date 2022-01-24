@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Owner extends Authenticatable
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;   //ソフトデリートが可能になる
 
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          期限切れオーナー一覧
+          期限切れオーナー一覧！
       </h2>
   </x-slot>
 
@@ -29,6 +29,13 @@
                             <td class="px-4 py-3">{{ $owner->email }}</td>
                             <td class="px-4 py-3">{{ $owner->deleted_at->diffForHumans() }}</td>
                             
+                            <form id="delete_{{$owner->id}}" method="post" action="{{ route('admin.expired-owners.restore', ['owner' => $owner->id ] )}}">
+                              @csrf
+                              <td class="px-4 py-3">
+                                <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id ])}}'" class="text-white bg-blue-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded ">復元</button>                        
+                              </td>
+                            </form>
+
                             <form id="delete_{{$owner->id}}" method="post" action="{{ route('admin.expired-owners.destroy', ['owner' => $owner->id ] )}}">
                               @csrf
                               <td class="px-4 py-3">

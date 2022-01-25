@@ -12,7 +12,7 @@ class Owner extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -44,6 +44,6 @@ class Owner extends Authenticatable
 
     public function shop()
     {
-        return $this->hasOne(Shop::class);
+        return $this->hasOne(Shop::class);  //1by1
     }
 }

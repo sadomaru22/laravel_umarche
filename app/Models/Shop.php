@@ -10,7 +10,7 @@ class Shop extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $fillable = [  //わざわざ1つずつフォームの値を受け取らなくても登録・更新処理ができる
         'owner_id',
         'name',
         'information',

@@ -16,9 +16,9 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner_id')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');   //これを追加することで、Ownerを削除したときに一緒に削除されるようになる
             $table->string('name');
             $table->text('information');
             $table->string('filename');

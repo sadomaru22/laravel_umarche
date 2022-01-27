@@ -8,6 +8,7 @@ class UploadImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * 認証されているユーザが使えるかどうか
      *
      * @return bool
      */
@@ -24,16 +25,16 @@ class UploadImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
 
     public function messages()
     {
-    return [
-      'image' => '指定されたファイルが画像ではありません。',
-      'mines' => '指定された拡張子（jpg/jpeg/png）ではありません。',
-      'max' => 'ファイルサイズは2MB以内にしてください。',
-      ];
+        return [
+            'image' => '指定されたファイルが画像ではありません。',
+            'mines' => '指定された拡張子（jpg/jpeg/png）ではありません。',
+            'max' => 'ファイルサイズは2MB以内にしてください。',
+        ];
     }
 }
